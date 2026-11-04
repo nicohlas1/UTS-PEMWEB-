@@ -8,15 +8,15 @@
 </head>
 <body>
     <div>
-        <form method="post" action="@if(isset($mahasiswa))
-            {{ route('mahasiswa.update', ['id' => $mahasiswa['id']]) }}
-        @else
-            {{ route('mahasiswa.create') }}
-        @endif">
-            @csrf
-            @if(isset($mahasiswa))
-                <input type="hidden" name="_method" value="put" />
-            @endif
+        <form method="POST" action="@if(isset($mahasiswa))
+    {{ route('mahasiswa.update', $mahasiswa['id']) }}
+@else
+    {{ route('mahasiswa.store') }}
+@endif">
+    @csrf
+    @if(isset($mahasiswa))
+        @method('PUT')
+    @endif
 
             <table border="1" bgcolor="black">
                 <tr>
